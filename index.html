@@ -28,30 +28,7 @@
       color: #1a1a1a;
     }
 
-    /* Custom Cursor */
-    .custom-cursor {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #FF0055;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s;
-      transform: translate(-50%, -50%);
-    }
-
-    .custom-cursor-dot {
-      width: 4px;
-      height: 4px;
-      background: #FF0055;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 10000;
-      transition: transform 0.05s;
-      transform: translate(-50%, -50%);
-    }
+    
 
     /* Floating Eyes Container */
     .floating-eyes {
@@ -936,8 +913,7 @@
 <body>
 
   <!-- Custom Cursor -->
-  <div class="custom-cursor"></div>
-  <div class="custom-cursor-dot"></div>
+ 
 
   <!-- Floating Eyes that follow mouse -->
   <div class="floating-eyes">
@@ -1189,59 +1165,7 @@
   </div>
 
   <script>
-    // ========== CUSTOM CURSOR WITH EYES FOLLOWING MOUSE ==========
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorDot = document.querySelector('.custom-cursor-dot');
-    const pupils = document.querySelectorAll('.pupil');
-    const eyes = document.querySelectorAll('.eye');
-    
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-    let dotX = 0, dotY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      
-      // Cursor animation
-      cursorX += (mouseX - cursorX) * 0.2;
-      cursorY += (mouseY - cursorY) * 0.2;
-      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-      
-      dotX += (mouseX - dotX) * 0.4;
-      dotY += (mouseY - dotY) * 0.4;
-      cursorDot.style.transform = `translate(${dotX}px, ${dotY}px)`;
-      
-      // Update pupil positions based on mouse
-      eyes.forEach((eye, index) => {
-        const eyeRect = eye.getBoundingClientRect();
-        const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-        const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-        
-        const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
-        const distance = Math.min(8, Math.hypot(mouseX - eyeCenterX, mouseY - eyeCenterY) / 20);
-        const pupilX = Math.cos(angle) * distance;
-        const pupilY = Math.sin(angle) * distance;
-        
-        if (pupils[index]) {
-          pupils[index].style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
-        }
-      });
-    });
-    
-    // Hide default cursor
-   // Hide default cursor only on desktop and fix for RTL
-if (window.innerWidth > 768) {
-  document.body.style.cursor = 'none';
-}
-
-// Also fix for language change - re-enable cursor on language switch
-const observer = new MutationObserver(function() {
-  if (window.innerWidth > 768) {
-    document.body.style.cursor = 'none';
-  }
-});
-observer.observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
+   
     
     // ========== PROJECT DATA ==========
     const projects = [
