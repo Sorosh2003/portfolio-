@@ -399,6 +399,15 @@
       background: linear-gradient(135deg, #FF0055, #ff3388);
       color: white;
       border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
     }
 
     .btn-hire:hover {
@@ -410,6 +419,15 @@
       color: #FF0055;
       border: 2px solid #FF0055;
       background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
     }
 
     .btn-resume:hover {
@@ -746,18 +764,6 @@
       flex-wrap: wrap;
     }
 
-    .btn-hire, .btn-resume {
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     .info-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -981,9 +987,9 @@
           Passionate full-stack developer and designer building modern web applications.
         </div>
         <div class="cta-buttons">
-          <button class="btn-hire" id="hireBtn">
+          <a href="mailto:alisoroshhaidari9@gmail.com?subject=Hiring%20Inquiry" class="btn-hire" id="hireBtn">
             <i class="fas fa-paper-plane"></i> <span id="hireBtnText">Hire Me</span>
-          </button>
+          </a>
           <a href="resume.pdf" class="btn-resume" id="resumeBtn" download>
             <i class="fas fa-download"></i> <span id="resumeBtnText">Download Resume</span>
           </a>
@@ -1103,9 +1109,9 @@
             <li><i class="fas fa-check-circle"></i> <span id="feature4">API Integration</span></li>
             <li><i class="fas fa-check-circle"></i> <span id="feature5">Brand Identity Design</span></li>
           </ul>
-          <button class="btn-hire" style="width: 100%; justify-content: center;" id="hireBtn2">
+          <a href="mailto:alisoroshhaidari9@gmail.com?subject=Contact%20Request" class="btn-hire" style="width: 100%; justify-content: center; text-decoration: none; display: inline-flex;" id="hireBtn2">
             <i class="fas fa-envelope"></i> <span id="contactMeText">Contact Me</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -1229,11 +1235,10 @@
     // ========== PROJECT DATA ==========
     const projects = [
       { id: 1, title: "MarketPlace", category: "dev", icon: "fas fa-store", tech: ["Node.js", "Express", "Supabase"], link: "https://marketplace-clean-2025.vercel.app", github: "https://github.com/Sorosh2003/marketplace" },
-      { id: 2, title: "E-Commerce Platform", category: "dev", icon: "fas fa-shopping-cart", tech: ["React", "Node.js", "MongoDB"], link: "https://sorosh2003.github.io/ecommerce-platform/", github: "#" },
-      { id: 3, title: "Brand Identity Package", category: "design", icon: "fas fa-trademark", tech: ["Illustrator", "Typography", "Figma"], link: "https://sorosh2003.github.io/Brand-identity-package-/", github: null },
-      { id: 4, title: "Weather App", category: "dev", icon: "fas fa-cloud-sun", tech: ["JavaScript", "API", "CSS"], link: "https://sorosh2003.github.io/Weather-app/", github: "#" },
-      { id: 5, title: "Analytics Dashboard UI", category: "design", icon: "fas fa-chart-line", tech: ["Figma", "UI/UX", "Design System"], link: "#", github: null },
-      { id: 6, title: "Real-time Chat App", category: "dev", icon: "fas fa-comments", tech: ["Socket.io", "Express", "HTML/CSS"], link: "https://sorosh2003.github.io/Chat-App-/", github: "#" }
+      { id: 2, title: "E-Commerce Platform", category: "dev", icon: "fas fa-shopping-cart", tech: ["React", "Node.js", "MongoDB"], link: "https://sorosh2003.github.io/ecommerce-platform/", github: "https://github.com/Sorosh2003/ecommerce-platform" },
+      { id: 3, title: "Brand Identity Package", category: "design", icon: "fas fa-trademark", tech: ["Illustrator", "Typography", "Figma"], link: "https://sorosh2003.github.io/Brand-identity-package-/", github: "https://github.com/Sorosh2003/brand-identity-package" },
+      { id: 4, title: "Weather App", category: "dev", icon: "fas fa-cloud-sun", tech: ["JavaScript", "API", "CSS"], link: "https://sorosh2003.github.io/Weather-app/", github: "https://github.com/Sorosh2003/weather-app" },
+      { id: 5, title: "Real-time Chat App", category: "dev", icon: "fas fa-comments", tech: ["Socket.io", "Express", "HTML/CSS"], link: "https://sorosh2003.github.io/Chat-App-/", github: "https://github.com/Sorosh2003/Chat-App-" }
     ];
 
     // ========== TRANSLATIONS ==========
