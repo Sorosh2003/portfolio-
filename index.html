@@ -1230,7 +1230,18 @@
     });
     
     // Hide default cursor
+   // Hide default cursor only on desktop and fix for RTL
+if (window.innerWidth > 768) {
+  document.body.style.cursor = 'none';
+}
+
+// Also fix for language change - re-enable cursor on language switch
+const observer = new MutationObserver(function() {
+  if (window.innerWidth > 768) {
     document.body.style.cursor = 'none';
+  }
+});
+observer.observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
     
     // ========== PROJECT DATA ==========
     const projects = [
