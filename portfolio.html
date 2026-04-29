@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlTag">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmad Ali Sorosh Haidari | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      cursor: none;
+    }
+
+    /* Light Mode */
+    body.light-mode {
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #FF0055;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+    }
+
+    .custom-cursor-dot {
+      width: 4px;
+      height: 4px;
+      background: #FF0055;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.05s;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Floating Eyes Container */
+    .floating-eyes {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10001;
+      pointer-events: none;
+    }
+
+    .eye-container {
+      display: flex;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      padding: 15px 25px;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 0, 85, 0.3);
+    }
+
+    .eye {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+    }
+
+    .pupil {
+      width: 20px;
+      height: 20px;
+      background: #FF0055;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+    }
+
+    .eye-label {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: #FF0055;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    /* Persian/RTL Font */
+    html[dir="rtl"] body {
+      font-family: 'Vazirmatn', 'Inter', sans-serif;
+    }
+
+    /* Hero Section with Split Layout */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 80vh;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Text Content */
+    .hero-content {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    /* Image Content */
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Robot SVG Styling */
+    .robot-svg {
+      width: 320px;
+      height: auto;
+      animation: floatImage 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.3));
+      transition: all 0.3s;
+    }
+
+    .robot-svg:hover {
+      filter: drop-shadow(0 0 30px rgba(255, 0, 85, 0.6));
+      transform: scale(1.02);
+    }
+
+    @keyframes floatImage {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Robot Colors - Dark Mode (Default) */
+    .robot-head {
+      fill: #2D3436;
+    }
+    .robot-body {
+      fill: #2D3436;
+    }
+    .robot-eye-left, .robot-eye-right {
+      fill: #1a1a1a;
+      stroke: #FF0055;
+      stroke-width: 2;
+    }
+    .eye-glow-left, .eye-glow-right {
+      fill: #FF0055;
+      opacity: 0.8;
+    }
+    .robot-mouth {
+      stroke: #FF0055;
+    }
+    .robot-ear-left, .robot-ear-right {
+      fill: #2D3436;
+    }
+    .robot-chest {
+      fill: #1a1a1a;
+      stroke: #FF0055;
+      stroke-width: 1.5;
+    }
+    .button-power {
+      fill: #FF3366;
+    }
+    .button-setting {
+      fill: #FFD700;
+    }
+    .button-menu {
+      fill: #00FF88;
+    }
+    .button-heart {
+      fill: #FF0055;
+    }
+    .button-star {
+      fill: #8B5CF6;
+    }
+    .robot-arm-left, .robot-arm-right {
+      fill: #2D3436;
+    }
+    .robot-hand-left, .robot-hand-right {
+      fill: #FF0055;
+    }
+    .robot-leg-left, .robot-leg-right {
+      fill: #2D3436;
+    }
+    .robot-foot-left, .robot-foot-right {
+      fill: #FF0055;
+    }
+
+    /* Light Mode Colors */
+    body.light-mode .robot-head,
+    body.light-mode .robot-body,
+    body.light-mode .robot-ear-left,
+    body.light-mode .robot-ear-right,
+    body.light-mode .robot-arm-left,
+    body.light-mode .robot-arm-right,
+    body.light-mode .robot-leg-left,
+    body.light-mode .robot-leg-right {
+      fill: #4a4a4a;
+    }
+    body.light-mode .robot-chest {
+      fill: #2a2a2a;
+    }
+
+    /* Typing Animation */
+    .typing-container {
+      height: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .typing-text {
+      color: #FF0055;
+      font-size: 1.2rem;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #FF0055;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: #FF0055; }
+      50% { border-color: transparent; }
+    }
+
+    /* LTR (English) - text left aligned */
+    html[dir="ltr"] .hero-content {
+      text-align: left;
+    }
+
+    /* RTL (Persian) - text right aligned */
+    html[dir="rtl"] .hero-content {
+      text-align: right;
+    }
+
+    /* RTL specific adjustments */
+    html[dir="rtl"] .skills-category-title {
+      padding-left: 0;
+      padding-right: 0.5rem;
+      border-left: none;
+      border-right: 3px solid #FF0055;
+    }
+
+    html[dir="rtl"] .hire-features li {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .contact-item {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .cta-buttons {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .filter-buttons {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .projects-grid {
+      direction: ltr;
+    }
+
+    html[dir="rtl"] .project-card {
+      direction: rtl;
+    }
+
+    /* Scroll Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: #FF0055;
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s;
+    }
+
+    /* Dark/Light Mode Toggle */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .mode-toggle:hover {
+      transform: scale(1.05);
+      border-color: #FF0055;
+    }
+
+    body.light-mode .mode-toggle {
+      background: white;
+      border: 1px solid #ddd;
+      color: #1a1a1a;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 140px;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .lang-switcher:hover {
+      transform: scale(1.05);
+      border-color: #FF0055;
+    }
+
+    body.light-mode .lang-switcher {
+      background: white;
+      border: 1px solid #ddd;
+      color: #1a1a1a;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FF0055;
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 1000;
+      border: none;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #ff3388;
+      transform: translateY(-3px);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #FF0055, #ff3388);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* CTA Buttons */
+    .btn-hire {
+      background: linear-gradient(135deg, #FF0055, #ff3388);
+      color: white;
+      border: none;
+    }
+
+    .btn-hire:hover {
+      box-shadow: 0 10px 20px rgba(255, 0, 85, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-resume {
+      color: #FF0055;
+      border: 2px solid #FF0055;
+      background: transparent;
+    }
+
+    .btn-resume:hover {
+      background: rgba(255, 0, 85, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .section-title::after {
+      background: linear-gradient(90deg, #FF0055, #ff3388);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 3px;
+      border-radius: 3px;
+    }
+
+    /* Skills */
+    .skill i {
+      color: #FF0055;
+    }
+
+    .skill:hover {
+      background: rgba(255, 0, 85, 0.15);
+      border-color: #FF0055;
+    }
+
+    .skills-category-title {
+      color: #FF0055;
+      border-left: 3px solid #FF0055;
+    }
+
+    /* Cards */
+    .about-card, .education-card, .hire-card {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(255, 0, 85, 0.2);
+      transition: all 0.3s;
+    }
+
+    .about-card:hover, .education-card:hover, .hire-card:hover {
+      transform: translateY(-5px);
+      border-color: #FF0055;
+    }
+
+    .about-card h3, .education-card h3, .hire-card h3 {
+      color: #FF0055;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .education-item {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 0, 85, 0.2);
+    }
+
+    .education-item h4 {
+      color: #FF0055;
+      margin-bottom: 0.3rem;
+    }
+
+    .education-item p {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .hire-features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .hire-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hire-features li i {
+      color: #FF0055;
+      width: 24px;
+    }
+
+    .skills-wrapper {
+      background: rgba(20, 20, 20, 0.4);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 0, 85, 0.2);
+    }
+
+    .skills-category {
+      margin-bottom: 2rem;
+    }
+
+    .skills-category-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill {
+      background: rgba(30, 30, 30, 0.8);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #e0e0e0;
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .design-skill {
+      background: linear-gradient(135deg, rgba(255, 0, 85, 0.1), rgba(255, 51, 136, 0.1));
+      border: 1px solid rgba(255, 0, 85, 0.3);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 0, 85, 0.2);
+    }
+
+    .project-card.hide {
+      display: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+      border-color: #FF0055;
+    }
+
+    .project-img {
+      height: 180px;
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-img i {
+      font-size: 3.5rem;
+      color: #FF0055;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #FF0055;
+    }
+
+    .project-desc {
+      color: #aaa;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-tag {
+      background: rgba(51, 51, 51, 0.8);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      color: #aaa;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-links a {
+      color: #FF0055;
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.3s;
+    }
+
+    .project-links a:hover {
+      color: #ff3388;
+    }
+
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.5rem;
+      border-radius: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      transition: all 0.3s;
+    }
+
+    .contact-item i {
+      color: #FF0055;
+      font-size: 1.2rem;
+    }
+
+    .contact-item a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .contact-item a:hover {
+      color: #FF0055;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      color: #aaa;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #FF0055;
+      transform: translateY(-3px);
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn.active {
+      background: #FF0055;
+      color: white;
+      border-color: #FF0055;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .section {
+      margin: 4rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-hire, .btn-resume {
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .about-text, .education-text {
+      color: #ccc;
+      line-height: 1.8;
+    }
+
+    .location {
+      color: #FF0055;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      background: rgba(255, 0, 85, 0.1);
+      border-radius: 40px;
+    }
+
+    .bio {
+      max-width: 600px;
+      margin: 1rem 0;
+      color: #aaa;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255, 0, 85, 0.1);
+      margin-top: 3rem;
+      color: #666;
+      font-size: 0.75rem;
+    }
+
+    /* Light Mode Overrides */
+    body.light-mode .skill {
+      background: white;
+      border: 1px solid #ddd;
+      color: #1a1a1a;
+    }
+
+    body.light-mode .skill i {
+      color: #FF0055;
+    }
+
+    body.light-mode .skill:hover {
+      background: #fff0f5;
+      border-color: #FF0055;
+    }
+
+    body.light-mode .project-card,
+    body.light-mode .about-card,
+    body.light-mode .education-card,
+    body.light-mode .hire-card,
+    body.light-mode .skills-wrapper,
+    body.light-mode .contact-item {
+      background: white;
+      border: 1px solid #ddd;
+    }
+
+    body.light-mode .project-desc,
+    body.light-mode .about-text,
+    body.light-mode .education-text {
+      color: #666;
+    }
+
+    body.light-mode .tech-tag {
+      background: #f0f0f0;
+      color: #666;
+    }
+
+    body.light-mode .contact-item a {
+      color: #1a1a1a;
+    }
+
+    body.light-mode .filter-btn {
+      background: white;
+      border: 1px solid #ddd;
+      color: #1a1a1a;
+    }
+
+    body.light-mode .filter-btn.active {
+      background: #FF0055;
+      color: white;
+    }
+
+    body.light-mode .location {
+      background: rgba(255, 0, 85, 0.1);
+    }
+
+    body.light-mode .bio {
+      color: #666;
+    }
+
+    body.light-mode .social-links a {
+      color: #666;
+    }
+
+    body.light-mode .project-img {
+      background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      html[dir="ltr"] .hero-content {
+        text-align: center;
+      }
+      html[dir="rtl"] .hero-content {
+        text-align: center;
+      }
+      .robot-svg {
+        width: 200px;
+      }
+      .floating-eyes {
+        top: 10px;
+        left: 10px;
+        transform: scale(0.7);
+      }
+      .eye-container {
+        padding: 8px 15px;
+        gap: 10px;
+      }
+      .eye {
+        width: 30px;
+        height: 30px;
+      }
+      .pupil {
+        width: 12px;
+        height: 12px;
+      }
+      .eye-label {
+        font-size: 7px;
+        bottom: -18px;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .typing-text {
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      .mode-toggle {
+        top: 20px;
+        right: 20px;
+      }
+      .lang-switcher {
+        top: 20px;
+        right: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+
+  <!-- Floating Eyes that follow mouse -->
+  <div class="floating-eyes">
+    <div class="eye-container">
+      <div class="eye">
+        <div class="pupil"></div>
+        <div class="eye-label">👀</div>
+      </div>
+      <div class="eye">
+        <div class="pupil"></div>
+        <div class="eye-label">🎯</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Dark/Light Mode Toggle -->
+  <div class="mode-toggle" id="modeToggle">
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon" style="display: none;"></i>
+    <span id="modeText">Light</span>
+  </div>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher" id="langSwitcher">
+    <i class="fas fa-language"></i>
+    <span id="langText">English</span>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div class="container">
+    <!-- Hero Section with Robot SVG -->
+    <div class="hero">
+      <div class="hero-content">
+        <h1 id="name">Ahmad Ali Sorosh Haidari</h1>
+        <div class="typing-container">
+          <div class="typing-text" id="typingText"></div>
+        </div>
+        <div class="location" id="location"><i class="fas fa-map-marker-alt"></i> Kabul, Afghanistan</div>
+        <div class="bio" id="bio">
+          Passionate full-stack developer and designer building modern web applications.
+        </div>
+        <div class="cta-buttons">
+          <button class="btn-hire" id="hireBtn">
+            <i class="fas fa-paper-plane"></i> <span id="hireBtnText">Hire Me</span>
+          </button>
+          <a href="resume.pdf" class="btn-resume" id="resumeBtn" download>
+            <i class="fas fa-download"></i> <span id="resumeBtnText">Download Resume</span>
+          </a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/Sorosh2003" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:alisoroshhaidari9@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <svg class="robot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="300" height="300">
+          <!-- Robot Body -->
+          <rect class="robot-body" x="50" y="100" width="100" height="70" rx="10" />
+          
+          <!-- Robot Head -->
+          <rect class="robot-head" x="60" y="20" width="80" height="70" rx="15" />
+          
+          <!-- Robot Eyes -->
+          <ellipse class="robot-eye-left" cx="85" cy="50" rx="10" ry="12" />
+          <ellipse class="robot-eye-right" cx="115" cy="50" rx="10" ry="12" />
+          
+          <!-- Eye Glow -->
+          <ellipse class="eye-glow-left" cx="85" cy="50" rx="6" ry="8" />
+          <ellipse class="eye-glow-right" cx="115" cy="50" rx="6" ry="8" />
+          
+          <!-- Robot Mouth (Smile) -->
+          <path class="robot-mouth" d="M 85 68 Q 100 80 115 68" stroke-width="3" fill="none" stroke-linecap="round" />
+          
+          <!-- Robot Antenna -->
+          <line x1="100" y1="20" x2="100" y2="5" stroke="#FF0055" stroke-width="4" stroke-linecap="round" />
+          <circle cx="100" cy="3" r="6" fill="#FF0055" />
+          
+          <!-- Antenna Signal Rings -->
+          <circle cx="100" cy="0" r="12" fill="none" stroke="#FF0055" stroke-width="2" opacity="0.5">
+            <animate attributeName="r" values="12;20;12" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" />
+          </circle>
+          
+          <!-- Robot Ears -->
+          <rect class="robot-ear-left" x="45" y="45" width="15" height="25" rx="5" />
+          <rect class="robot-ear-right" x="140" y="45" width="15" height="25" rx="5" />
+          
+          <!-- Chest Panel / Belly -->
+          <rect class="robot-chest" x="70" y="115" width="60" height="40" rx="8" />
+          
+          <!-- Buttons on Chest (Top row - 3 buttons) -->
+          <rect class="button-power" x="78" y="123" width="12" height="12" rx="2" />
+          <rect class="button-setting" x="94" y="123" width="12" height="12" rx="2" />
+          <rect class="button-menu" x="110" y="123" width="12" height="12" rx="2" />
+          
+          <!-- Buttons on Chest (Bottom row - 2 buttons) -->
+          <circle class="button-heart" cx="90" cy="145" r="7" />
+          <circle class="button-star" cx="110" cy="145" r="7" />
+          
+          <!-- Robot Arms -->
+          <rect class="robot-arm-left" x="20" y="110" width="30" height="15" rx="7" />
+          <rect class="robot-arm-right" x="150" y="110" width="30" height="15" rx="7" />
+          
+          <!-- Robot Hands -->
+          <circle class="robot-hand-left" cx="20" cy="118" r="8" />
+          <circle class="robot-hand-right" cx="180" cy="118" r="8" />
+          
+          <!-- Robot Legs -->
+          <rect class="robot-leg-left" x="65" y="170" width="25" height="30" rx="5" />
+          <rect class="robot-leg-right" x="110" y="170" width="25" height="30" rx="5" />
+          
+          <!-- Robot Feet -->
+          <rect class="robot-foot-left" x="55" y="195" width="40" height="12" rx="5" />
+          <rect class="robot-foot-right" x="105" y="195" width="40" height="12" rx="5" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- About, Education & Hire Me Section -->
+    <div class="section">
+      <div class="info-grid">
+        <div class="about-card">
+          <h3 id="aboutTitle"><i class="fas fa-user"></i> About Me</h3>
+          <div class="about-text" id="aboutText">
+            <p>I'm Ahmad Ali Sorosh Haidari, a passionate Full-Stack Developer and UI/UX Designer from Kabul, Afghanistan.</p>
+            <br>
+            <p>My journey in coding and web design started in Kabul and continued in Islamabad, Pakistan, where I expanded my skills and knowledge.</p>
+            <br>
+            <p>I hold a Bachelor's degree and have dedicated myself to mastering modern web technologies. I love creating beautiful, functional web applications that solve real problems.</p>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <h3 id="educationTitle"><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="education-text">
+            <div class="education-item">
+              <h4 id="edu1Title">Bachelor's Degree</h4>
+              <p id="edu1Desc">Completed in Kabul, Afghanistan</p>
+            </div>
+            <div class="education-item">
+              <h4 id="edu2Title">Web Development & Coding</h4>
+              <p id="edu2Desc">Trained in Kabul, Afghanistan</p>
+            </div>
+            <div class="education-item">
+              <h4 id="edu3Title">Web Design & Advanced Coding</h4>
+              <p id="edu3Desc">Trained in Islamabad, Pakistan</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hire-card">
+          <h3 id="hireTitle"><i class="fas fa-bullhorn"></i> Hire Me</h3>
+          <div class="about-text" id="hireText">
+            <p>Looking for a dedicated developer for your next project? I'm available for freelance work and full-time opportunities.</p>
+          </div>
+          <ul class="hire-features">
+            <li><i class="fas fa-check-circle"></i> <span id="feature1">Full-Stack Web Development</span></li>
+            <li><i class="fas fa-check-circle"></i> <span id="feature2">UI/UX Design</span></li>
+            <li><i class="fas fa-check-circle"></i> <span id="feature3">Responsive Websites</span></li>
+            <li><i class="fas fa-check-circle"></i> <span id="feature4">API Integration</span></li>
+            <li><i class="fas fa-check-circle"></i> <span id="feature5">Brand Identity Design</span></li>
+          </ul>
+          <button class="btn-hire" style="width: 100%; justify-content: center;" id="hireBtn2">
+            <i class="fas fa-envelope"></i> <span id="contactMeText">Contact Me</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <h2 class="section-title" id="skillsTitle">Skills</h2>
+      <div class="skills-wrapper">
+        
+        <div class="skills-category">
+          <div class="skills-category-title" id="devTitle">
+            <i class="fas fa-code"></i> Development
+          </div>
+          <div class="skills-grid">
+            <span class="skill"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill"><i class="fab fa-node"></i> Node.js</span>
+            <span class="skill"><i class="fas fa-code"></i> Express.js</span>
+            <span class="skill"><i class="fab fa-react"></i> React</span>
+            <span class="skill"><i class="fab fa-html5"></i> HTML5</span>
+            <span class="skill"><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span class="skill"><i class="fas fa-database"></i> SQL</span>
+            <span class="skill"><i class="fab fa-git-alt"></i> Git/GitHub</span>
+            <span class="skill"><i class="fas fa-cloud"></i> REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-category-title" id="designTitle">
+            <i class="fas fa-palette"></i> Design
+          </div>
+          <div class="skills-grid">
+            <span class="skill design-skill"><i class="fas fa-palette"></i> Graphic Design</span>
+            <span class="skill design-skill"><i class="fas fa-image"></i> Photoshop</span>
+            <span class="skill design-skill"><i class="fas fa-vector-square"></i> Illustrator</span>
+            <span class="skill design-skill"><i class="fas fa-drafting-compass"></i> Figma</span>
+            <span class="skill design-skill"><i class="fas fa-trademark"></i> Logo Design</span>
+            <span class="skill design-skill"><i class="fas fa-font"></i> Typography</span>
+            <span class="skill design-skill"><i class="fas fa-mobile-alt"></i> UI/UX Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <h2 class="section-title" id="projectsTitle">Projects</h2>
+      
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all" id="filterAll">All Projects</button>
+        <button class="filter-btn" data-filter="dev" id="filterDev">💻 Development</button>
+        <button class="filter-btn" data-filter="design" id="filterDesign">🎨 Design</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section">
+      <h2 class="section-title" id="contactTitle">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:alisoroshhaidari9@gmail.com">alisoroshhaidari9@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/Sorosh2003" target="_blank">github.com/Sorosh2003</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p id="footerText">© 2025 Ahmad Ali Sorosh Haidari. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // ========== CUSTOM CURSOR WITH EYES FOLLOWING MOUSE ==========
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.custom-cursor-dot');
+    const pupils = document.querySelectorAll('.pupil');
+    const eyes = document.querySelectorAll('.eye');
+    
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let dotX = 0, dotY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Cursor animation
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      
+      dotX += (mouseX - dotX) * 0.4;
+      dotY += (mouseY - dotY) * 0.4;
+      cursorDot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+      
+      // Update pupil positions based on mouse
+      eyes.forEach((eye, index) => {
+        const eyeRect = eye.getBoundingClientRect();
+        const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+        const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+        
+        const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
+        const distance = Math.min(8, Math.hypot(mouseX - eyeCenterX, mouseY - eyeCenterY) / 20);
+        const pupilX = Math.cos(angle) * distance;
+        const pupilY = Math.sin(angle) * distance;
+        
+        if (pupils[index]) {
+          pupils[index].style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
+        }
+      });
+    });
+    
+    // Hide default cursor
+    document.body.style.cursor = 'none';
+    
+    // ========== PROJECT DATA ==========
+    const projects = [
+      { id: 1, title: "MarketPlace", category: "dev", icon: "fas fa-store", tech: ["Node.js", "Express", "Supabase"], link: "https://marketplace-clean-2025.vercel.app", github: "https://github.com/Sorosh2003/marketplace" },
+      { id: 2, title: "E-Commerce Platform", category: "dev", icon: "fas fa-shopping-cart", tech: ["React", "Node.js", "MongoDB"], link: "https://sorosh2003.github.io/ecommerce-platform/", github: "#" },
+      { id: 3, title: "Brand Identity Package", category: "design", icon: "fas fa-trademark", tech: ["Illustrator", "Typography", "Figma"], link: "https://sorosh2003.github.io/Brand-identity-package-/", github: null },
+      { id: 4, title: "Weather App", category: "dev", icon: "fas fa-cloud-sun", tech: ["JavaScript", "API", "CSS"], link: "https://sorosh2003.github.io/Weather-app/", github: "#" },
+      { id: 5, title: "Analytics Dashboard UI", category: "design", icon: "fas fa-chart-line", tech: ["Figma", "UI/UX", "Design System"], link: "#", github: null },
+      { id: 6, title: "Real-time Chat App", category: "dev", icon: "fas fa-comments", tech: ["Socket.io", "Express", "HTML/CSS"], link: "https://sorosh2003.github.io/Chat-App-/", github: "#" }
+    ];
+
+    // ========== TRANSLATIONS ==========
+    const translations = {
+      en: {
+        name: "Ahmad Ali Sorosh Haidari",
+        location: "Kabul, Afghanistan",
+        bio: "Passionate full-stack developer and designer building modern web applications.",
+        hireBtn: "Hire Me",
+        resumeBtn: "Download Resume",
+        aboutTitle: "About Me",
+        educationTitle: "Education",
+        hireTitle: "Hire Me",
+        hireText: "Looking for a dedicated developer for your next project? I'm available for freelance work and full-time opportunities.",
+        contactMeText: "Contact Me",
+        skillsTitle: "Skills",
+        devTitle: "Development",
+        designTitle: "Design",
+        projectsTitle: "Projects",
+        contactTitle: "Contact",
+        filterAll: "All Projects",
+        filterDev: "💻 Development",
+        filterDesign: "🎨 Design",
+        feature1: "Full-Stack Web Development",
+        feature2: "UI/UX Design",
+        feature3: "Responsive Websites",
+        feature4: "API Integration",
+        feature5: "Brand Identity Design",
+        edu1Title: "Bachelor's Degree",
+        edu1Desc: "Completed in Kabul, Afghanistan",
+        edu2Title: "Web Development & Coding",
+        edu2Desc: "Trained in Kabul, Afghanistan",
+        edu3Title: "Web Design & Advanced Coding",
+        edu3Desc: "Trained in Islamabad, Pakistan",
+        footerText: "© 2025 Ahmad Ali Sorosh Haidari. All rights reserved.",
+        aboutText: "I'm Ahmad Ali Sorosh Haidari, a passionate Full-Stack Developer and UI/UX Designer from Kabul, Afghanistan. My journey in coding and web design started in Kabul and continued in Islamabad, Pakistan, where I expanded my skills and knowledge. I hold a Bachelor's degree and have dedicated myself to mastering modern web technologies. I love creating beautiful, functional web applications that solve real problems."
+      },
+      fa: {
+        name: "احمد علی سروش حیدری",
+        location: "کابل، افغانستان",
+        bio: "توسعه‌دهنده فول‌استک و طراح علاقه‌مند به ساختن وب‌اپلیکیشن‌های مدرن",
+        hireBtn: "استخدام کنید",
+        resumeBtn: "دانلود رزومه",
+        aboutTitle: "درباره من",
+        educationTitle: "تحصیلات",
+        hireTitle: "استخدام",
+        hireText: "به دنبال یک توسعه‌دهنده متعهد برای پروژه بعدی خود هستید؟ من برای کار آزاد و فرصت‌های تمام وقت در دسترس هستم.",
+        contactMeText: "تماس با من",
+        skillsTitle: "مهارت‌ها",
+        devTitle: "توسعه",
+        designTitle: "طراحی",
+        projectsTitle: "پروژه‌ها",
+        contactTitle: "تماس",
+        filterAll: "همه پروژه‌ها",
+        filterDev: "💻 توسعه",
+        filterDesign: "🎨 طراحی",
+        feature1: "توسعه وب فول‌استک",
+        feature2: "طراحی UI/UX",
+        feature3: "وبسایت‌های ریسپانسیو",
+        feature4: "ادغام API",
+        feature5: "طراحی هویت برند",
+        edu1Title: "لیسانس",
+        edu1Desc: "تکمیل شده در کابل، افغانستان",
+        edu2Title: "توسعه وب و برنامه‌نویسی",
+        edu2Desc: "آموخته در کابل، افغانستان",
+        edu3Title: "طراحی وب و برنامه‌نویسی پیشرفته",
+        edu3Desc: "آموخته در اسلام‌آباد، پاکستان",
+        footerText: "© ۲۰۲۵ احمد علی سروش حیدری. تمام حقوق محفوظ است",
+        aboutText: "من احمد علی سروش حیدری هستم، یک توسعه‌دهنده فول‌استک و طراح UI/UX از کابل، افغانستان. سفر من در برنامه‌نویسی و طراحی وب از کابل شروع شد و در اسلام‌آباد، پاکستان ادامه یافت، جایی که مهارت‌ها و دانش خود را گسترش دادم. من دارای مدرک لیسانس هستم و خود را وقف تسلط بر فناوری‌های مدرن وب کرده‌ام. من عاشق ساختن برنامه‌های وب زیبا و کاربردی هستم که مشکلات واقعی را حل می‌کنند."
+      }
+    };
+
+    let currentLang = localStorage.getItem('language') || 'en';
+    let currentFilter = 'all';
+
+    function renderProjects() {
+      const filteredProjects = projects.filter(p => currentFilter === 'all' || p.category === currentFilter);
+      const grid = document.getElementById('projectsGrid');
+      
+      grid.innerHTML = filteredProjects.map(project => `
+        <div class="project-card" data-category="${project.category}">
+          <div class="project-img">
+            <i class="${project.icon}"></i>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">${project.title}</h3>
+            <p class="project-desc">${project.title === "MarketPlace" ? (currentLang === 'en' ? "Full-stack marketplace with user authentication, product listings, WhatsApp integration, and admin panel." : "بازارچه کامل با احراز هویت کاربر، لیست محصولات، یکپارچه سازی واتساپ و پنل مدیریت.") : (currentLang === 'en' ? "Professional web application" : "برنامه وب حرفه‌ای")}</p>
+            <div class="project-tech">
+              ${project.tech.map(tech => `<span class="tech-tag"><i class="fas fa-code"></i> ${tech}</span>`).join('')}
+            </div>
+            <div class="project-links">
+              <a href="${project.link}" target="_blank"><i class="fas fa-external-link-alt"></i> ${currentLang === 'en' ? 'Live Demo' : 'نمایش زنده'}</a>
+              ${project.github ? `<a href="${project.github}" target="_blank"><i class="fab fa-github"></i> ${currentLang === 'en' ? 'Code' : 'کد'}</a>` : ''}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Typing animation (same for both languages)
+    const typingTitles = ["Full-Stack Developer", "UI/UX Designer", "Creative Developer", "Problem Solver"];
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typingText');
+
+    function typeEffect() {
+      const currentTitle = typingTitles[titleIndex];
+      if (isDeleting) {
+        typingElement.textContent = currentTitle.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentTitle.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      if (!isDeleting && charIndex === currentTitle.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        titleIndex = (titleIndex + 1) % typingTitles.length;
+        setTimeout(typeEffect, 100);
+      } else {
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
+      }
+    }
+    typeEffect();
+
+    function applyLanguage() {
+      const t = translations[currentLang];
+      
+      // Update text content
+      document.getElementById('name').innerText = t.name;
+      document.getElementById('location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${t.location}`;
+      document.getElementById('bio').innerText = t.bio;
+      document.getElementById('hireBtnText').innerText = t.hireBtn;
+      document.getElementById('resumeBtnText').innerText = t.resumeBtn;
+      document.getElementById('aboutTitle').innerHTML = `<i class="fas fa-user"></i> ${t.aboutTitle}`;
+      document.getElementById('educationTitle').innerHTML = `<i class="fas fa-graduation-cap"></i> ${t.educationTitle}`;
+      document.getElementById('hireTitle').innerHTML = `<i class="fas fa-bullhorn"></i> ${t.hireTitle}`;
+      document.getElementById('hireText').innerHTML = `<p>${t.hireText}</p>`;
+      document.getElementById('contactMeText').innerText = t.contactMeText;
+      document.getElementById('skillsTitle').innerText = t.skillsTitle;
+      document.getElementById('devTitle').innerHTML = `<i class="fas fa-code"></i> ${t.devTitle}`;
+      document.getElementById('designTitle').innerHTML = `<i class="fas fa-palette"></i> ${t.designTitle}`;
+      document.getElementById('projectsTitle').innerText = t.projectsTitle;
+      document.getElementById('contactTitle').innerText = t.contactTitle;
+      document.getElementById('filterAll').innerText = t.filterAll;
+      document.getElementById('filterDev').innerHTML = t.filterDev;
+      document.getElementById('filterDesign').innerHTML = t.filterDesign;
+      document.getElementById('feature1').innerText = t.feature1;
+      document.getElementById('feature2').innerText = t.feature2;
+      document.getElementById('feature3').innerText = t.feature3;
+      document.getElementById('feature4').innerText = t.feature4;
+      document.getElementById('feature5').innerText = t.feature5;
+      document.getElementById('edu1Title').innerText = t.edu1Title;
+      document.getElementById('edu1Desc').innerText = t.edu1Desc;
+      document.getElementById('edu2Title').innerText = t.edu2Title;
+      document.getElementById('edu2Desc').innerText = t.edu2Desc;
+      document.getElementById('edu3Title').innerText = t.edu3Title;
+      document.getElementById('edu3Desc').innerText = t.edu3Desc;
+      document.getElementById('footerText').innerText = t.footerText;
+      document.getElementById('aboutText').innerHTML = `<p>${t.aboutText}</p>`;
+      
+      // Set RTL for Persian
+      const htmlTag = document.getElementById('htmlTag');
+      if (currentLang === 'fa') {
+        htmlTag.setAttribute('dir', 'rtl');
+        htmlTag.setAttribute('lang', 'fa');
+        document.getElementById('langText').innerText = 'فارسی';
+      } else {
+        htmlTag.setAttribute('dir', 'ltr');
+        htmlTag.setAttribute('lang', 'en');
+        document.getElementById('langText').innerText = 'English';
+      }
+      
+      // Re-render projects with new language
+      renderProjects();
+    }
+
+    // Language Switcher
+    document.getElementById('langSwitcher').addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'fa' : 'en';
+      localStorage.setItem('language', currentLang);
+      applyLanguage();
+    });
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderProjects();
+      });
+    });
+
+    // ========== SCROLL PROGRESS BAR ==========
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+      
+      const backToTop = document.getElementById('backToTop');
+      if (winScroll > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    // ========== BACK TO TOP ==========
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ========== DARK/LIGHT MODE ==========
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      modeToggle.querySelector('.fa-sun').style.display = isLight ? 'none' : 'inline-block';
+      modeToggle.querySelector('.fa-moon').style.display = isLight ? 'inline-block' : 'none';
+      modeToggle.querySelector('#modeText').textContent = isLight ? 'Dark' : 'Light';
+    });
+
+    // ========== HIRE ME BUTTONS ==========
+    const hireBtns = document.querySelectorAll('#hireBtn, #hireBtn2');
+    hireBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'mailto:alisoroshhaidari9@gmail.com?subject=Hiring%20Inquiry&body=Hi%20Ahmad%20Ali,%20I%27m%20interested%20in%20hiring%20you.';
+      });
+    });
+
+    // ========== INITIALIZE ==========
+    applyLanguage();
+  </script>
+</body>
+</html>
